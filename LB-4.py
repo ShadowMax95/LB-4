@@ -8,7 +8,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     file = open("Received File.txt", "wb")
     file.close()
     conn, addr = s.accept()
-    x = 0
     with conn:
         print('Connected by', addr)
         while True:
@@ -16,7 +15,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 while True:
                     data = conn.recv(1024)
                     file.write(data)
-                    x += 1
-                    print(x)
                     if not data:
                         conn.close()
